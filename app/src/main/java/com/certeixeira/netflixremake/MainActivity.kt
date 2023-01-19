@@ -3,6 +3,11 @@ package com.certeixeira.netflixremake
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -10,36 +15,31 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.i("Teste", "onCreate")
 
+        val adapter = MainAdapter()
+        val rv: RecyclerView = findViewById(R.id.rv_main)
+        rv.layoutManager = LinearLayoutManager(this)
+        rv.adapter = adapter
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.i("Teste", "onStart")
+    private inner class MainAdapter : RecyclerView.Adapter<MainAdapter.MovieViewHolder>() {
 
-    }
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+            val view = layoutInflater.inflate(R.layout.movie_item, parent, false)
+            return MovieViewHolder(view)
+        }
+        override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        }
 
-    override fun onResume() {
-        super.onResume()
-        Log.i("Teste", "onResume")
+        override fun getItemCount(): Int {
+            return 60
+        }
 
-    }
+        private inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    override fun onPause() {
-        super.onPause()
-        Log.i("Teste", "onPause")
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.i("Teste", "onStop")
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i("Teste", "onDestroy")
+        }
 
     }
 
 }
+
+
