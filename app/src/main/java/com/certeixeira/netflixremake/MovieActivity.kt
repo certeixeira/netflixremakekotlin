@@ -17,8 +17,9 @@ class MovieActivity : AppCompatActivity() {
 
         supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_24)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        // busquei o drawable
         val layerDrawable: LayerDrawable = ContextCompat.getDrawable(this, R.drawable.shadows) as LayerDrawable
+        // Busquei o filme
         val movieCover = ContextCompat.getDrawable(this, R.drawable.movie_4)
         layerDrawable.setDrawableByLayerId(R.id.cover_drawable, movieCover)
         val coverImg: ImageView = findViewById(R.id.movie_img)
