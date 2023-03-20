@@ -4,14 +4,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.certeixeira.netflixremake.model.Movie
 
-class MovieAdapter(private val movies: List<Movie>) :
+class MovieAdapter(
+    private val movies: List<Movie>,
+    @LayoutRes private val layoutId: Int
+    ) :
     RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
         return MovieViewHolder(view)
     }
 
@@ -29,7 +33,7 @@ class MovieAdapter(private val movies: List<Movie>) :
             val imageCover: ImageView = itemView.findViewById(R.id.img_cover)
 
             //aqui será trocado por uma url
-            //imageCover.setImageResource(movie.coverUrl)
+//            imageCover.setImageResource(movie.coverUrl)
         }
     }
 
